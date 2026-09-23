@@ -1,0 +1,59 @@
+#define _USE_MATH_DEFINES 
+#include<stdio.h>
+#include<locale.h>
+#include<math.h>
+
+void calculate_sin();
+void calc_indiv_expression();
+bool logic_expression(int a, int b, int c);
+
+int main() 
+{
+	setlocale(LC_CTYPE, "RUS.UTF-8");
+	calculate_sin();
+	puts("");
+	calc_indiv_expression();
+	puts("");
+}
+
+void calculate_sin()
+{
+    float gr, agl;
+    puts("Введите угол (град.):");
+    scanf("%f", &gr);
+
+    agl = gr * M_PI / 180;
+	printf("sin %f = %.6f\n", gr, sin(agl));
+}
+
+void calc_indiv_expression()
+{
+    const int t = -6;
+    float x;
+    puts("Введите значение x:");
+    scanf("%f", &x);
+    float a, b, y;
+    a = log(x);
+    b = sqrt(pow(x, 2) + pow(t, 2));
+    y = pow(fabs(a - b*x), 1./5);
+    printf("При значении x = %.1f y = %.4f\n", x, y);
+
+    bool logic_result = logic_expression((int)a, (int)b, (int)y);
+    if (logic_result)
+    {
+        printf("Условие выполнено (%d - да)", logic_result);
+        return;
+    }
+
+    printf("Условие выполнено (%d - нет)", logic_result);
+}
+
+bool logic_expression(int a, int b, int c)
+{
+    bool a_expr = (a + b) % 2 == 1;
+    bool b_expr = a % 3 == 0
+                && b % 3 == 0
+                && c % 3 == 0;
+
+    return a_expr && b_expr;
+}
