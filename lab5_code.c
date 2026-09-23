@@ -3,6 +3,8 @@
 #include<locale.h>
 #include<math.h>
 
+#define t -6
+
 void calculate_sin();
 void calc_indiv_expression();
 bool logic_expression(int a, int b, int c);
@@ -28,7 +30,6 @@ void calculate_sin()
 
 void calc_indiv_expression()
 {
-    const int t = -6;
     float x;
     puts("Введите значение x:");
     scanf("%f", &x);
