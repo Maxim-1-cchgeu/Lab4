@@ -9,7 +9,7 @@ void calculate_sin();
 void calc_indiv_expression();
 int get_condition_result(int a, int b, int c);
 
-int main() 
+int main()
 {
 	setlocale(LC_CTYPE, "RUS.UTF-8");
 	calculate_sin();
