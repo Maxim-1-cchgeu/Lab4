@@ -1,13 +1,13 @@
 #define _USE_MATH_DEFINES 
-#include<stdio.h>
-#include<locale.h>
-#include<math.h>
+#include <stdio.h>
+#include <locale.h>
+#include <math.h>
 
 #define t -6
 
 void calculate_sin();
 void calc_indiv_expression();
-bool logic_expression(int a, int b, int c);
+int get_condition_result(int a, int b, int c);
 
 int main() 
 {
@@ -16,11 +16,13 @@ int main()
 	puts("");
 	calc_indiv_expression();
 	puts("");
+
+    return 0;
 }
 
 void calculate_sin()
 {
-    float gr, agl;
+    double gr, agl;
     puts("Введите угол (град.):");
     scanf("%f", &gr);
 
@@ -30,29 +32,24 @@ void calculate_sin()
 
 void calc_indiv_expression()
 {
-    float x;
+    double x;
     puts("Введите значение x:");
     scanf("%f", &x);
-    float a, b, y;
+    
+    double a, b, y;
     a = log(x);
     b = sqrt(pow(x, 2) + pow(t, 2));
     y = pow(fabs(a - b*x), 1./5);
     printf("При значении x = %.1f y = %.4f\n", x, y);
 
-    bool logic_result = logic_expression((int)a, (int)b, (int)y);
-    if (logic_result)
-    {
-        printf("Условие выполнено (%d - да)", logic_result);
-        return;
-    }
-
-    printf("Условие выполнено (%d - нет)", logic_result);
+    int logic_result = get_condition_result((int)a, (int)b, (int)y);
+    printf("условие выполнено (1 - да, 0 - нет): %d\n", logic_result);
 }
 
-bool logic_expression(int a, int b, int c)
+int get_condition_result(int a, int b, int c)
 {
-    bool a_expr = (a + b) % 2 == 1;
-    bool b_expr = a % 3 == 0
+    int a_expr = (a + b) % 2 == 1;
+    int b_expr = a % 3 == 0
                 && b % 3 == 0
                 && c % 3 == 0;
 
