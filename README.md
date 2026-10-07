@@ -28,12 +28,20 @@ int main()
     setlocale(LC_CTYPE, "RUS.UTF-8");
 
     int A, B, C;
-    puts("Введите массу первого груза:");
+
+    puts("Введите массу первого груза: ");
     scanf("%d", &A);
 
-    float gravity = mass * ACCELERATION_DUE_TO_GRAVITY;
-    printf("Сила тяжести равна %.2f Н\n", gravity);
-    system("pause");
+    puts("Введите массу второго груза: ");
+    scanf("%d", &B);
+
+    puts("Введите массу третьего груза: ");
+    scanf("%d", &C);
+
+    int condition = A % 5 == 0 
+                    && B % 5 == 0
+                    && C % 5 == 0;
+    printf("Погрузка разрешена (1 - да, 0 - нет): %d\n", condition);
 }
 ```
 ## 3. Результаты работы программы
